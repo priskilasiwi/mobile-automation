@@ -2,17 +2,13 @@ import loginPage from '../pageobjects/login.page'
 
 export class LoginAction {
     async enterUsername(username) {
-        const fields = await $$(loginPage.usernameInput)
-        if (fields.length >= 1) {
-            await fields[0].setValue(username)
-        }
+    const field = await $(loginPage.usernameInput)
+    await field.setValue(username)
     }
 
     async enterPassword(password) {
-        const fields = await $$(loginPage.usernameInput)
-        if (fields.length >= 2) {
-            await fields[1].setValue(password)
-        }
+    const field = await $(loginPage.passwordInput)
+    await field.setValue(password)
     }
 
     async tapLogin() {
@@ -37,6 +33,12 @@ export class LoginAction {
         await btn.waitForExist({ timeout: 10000 })
         return btn.isExisting()
     }
+
+    async isErrorMessageVisible() {
+    const error = await $(loginPage.errorMessage);
+    await error.waitForDisplayed({ timeout: 5000 });
+    return await error.isDisplayed();
+}
 
 }
 

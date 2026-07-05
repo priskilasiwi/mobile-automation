@@ -1,6 +1,6 @@
 export class LoginPage {
     get loginButton() {
-        return 'android=new UiSelector().text("LOGIN")'
+        return 'android=new UiSelector().description("test-LOGIN")'
     }
 
     get productsTitle() {
@@ -8,7 +8,15 @@ export class LoginPage {
     }
 
     get usernameInput() {
-        return 'android.widget.EditText'
+        return 'android=new UiSelector().text("Username")'
+    }
+
+    get passwordInput() {
+        return 'android=new UiSelector().text("Password")'
+    }
+
+    get errorMessage() {
+    return 'android=new UiSelector().textContains("Username and password do not match")'
     }
 
 }
